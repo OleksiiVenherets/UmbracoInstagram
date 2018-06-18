@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UmbracoInstagram", "UmbracoInstagram\UmbracoInstagram.csproj", "{5C41DCE8-0311-49B8-9FB6-5FF00AF24FE7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UmbracoInstagram.Tests", "UmbracoInstagram.Tests\UmbracoInstagram.Tests.csproj", "{407AD640-3EF9-4D90-B467-42A84B36B146}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UmbracoInstagram", "UmbracoInstagram\UmbracoInstagram.csproj", "{5DF765C2-1081-40F6-B618-047AD3AEBFE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5C41DCE8-0311-49B8-9FB6-5FF00AF24FE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C41DCE8-0311-49B8-9FB6-5FF00AF24FE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5C41DCE8-0311-49B8-9FB6-5FF00AF24FE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5C41DCE8-0311-49B8-9FB6-5FF00AF24FE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{407AD640-3EF9-4D90-B467-42A84B36B146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{407AD640-3EF9-4D90-B467-42A84B36B146}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{407AD640-3EF9-4D90-B467-42A84B36B146}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{407AD640-3EF9-4D90-B467-42A84B36B146}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DF765C2-1081-40F6-B618-047AD3AEBFE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DF765C2-1081-40F6-B618-047AD3AEBFE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DF765C2-1081-40F6-B618-047AD3AEBFE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DF765C2-1081-40F6-B618-047AD3AEBFE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
