@@ -1,7 +1,7 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
-	Layout = "WebBase.cshtml";
+    Layout = "WebBase.cshtml";
 }
 
 @* the fun starts here *@
-
+@{Html.RenderAction("RenderLogout", "SiteLayout");}

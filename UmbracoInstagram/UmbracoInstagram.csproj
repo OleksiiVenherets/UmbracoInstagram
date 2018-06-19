@@ -294,7 +294,10 @@
     <Content Include="Views\Partials\SiteLayout\_Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\SiteLayoutController.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\MemberModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -341,6 +344,11 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Partials\_Login.cshtml" />
+    <Content Include="Views\Login.cshtml" />
+    <Content Include="Views\Partials\_Logout.cshtml" />
+    <Content Include="Views\Register.cshtml" />
+    <Content Include="Views\Partials\_Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -354,6 +362,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\" />
+    <Folder Include="Views\Member\" />
     <Folder Include="Views\SiteLayout\" />
   </ItemGroup>
   <PropertyGroup>
