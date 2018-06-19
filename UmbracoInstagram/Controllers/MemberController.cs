@@ -18,7 +18,7 @@ namespace UmbracoInstagram.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (Membership.ValidateUser(model.Username, model.Password))
+                if ( Membership.ValidateUser(model.Username, model.Password))
                 {
                     FormsAuthentication.SetAuthCookie(model.Username, false);
                     UrlHelper myHelper = new UrlHelper(HttpContext.Request.RequestContext);
@@ -52,7 +52,7 @@ namespace UmbracoInstagram.Controllers
             }
             if (model.Password!= model.ConfirmPassword)
             {
-                ModelState.AddModelError("", "Passwords do not match");
+                ModelState.AddModelError("", "Passwords did not match");
                 return CurrentUmbracoPage();
             }
             var member = memberService.CreateMemberWithIdentity(model.Email, model.Email, model.Name, "Member");

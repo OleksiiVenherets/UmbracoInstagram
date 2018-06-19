@@ -447,7 +447,9 @@
     <Compile Include="App_Data\Models\Profile.generated.cs" />
     <Compile Include="App_Data\Models\Register.generated.cs" />
     <Compile Include="App_Data\Models\Wall.generated.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\SiteLayoutController.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MemberModel.cs" />
@@ -502,6 +504,8 @@
     <Content Include="Views\Partials\_Logout.cshtml" />
     <Content Include="Views\Register.cshtml" />
     <Content Include="Views\Partials\_Register.cshtml" />
+    <Content Include="Views\Comment.cshtml" />
+    <Content Include="Views\Post.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -520,7 +524,9 @@
     <Folder Include="App_Data\TEMP\FileUploads\" />
     <Folder Include="App_Data\TEMP\Install\" />
     <Folder Include="Areas\" />
+    <Folder Include="Views\Home\" />
     <Folder Include="Views\Member\" />
+    <Folder Include="Views\Post\" />
     <Folder Include="Views\SiteLayout\" />
   </ItemGroup>
   <PropertyGroup>
