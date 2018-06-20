@@ -44,5 +44,50 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
+
+		///<summary>
+		/// Age
+		///</summary>
+		[ImplementPropertyType("age")]
+		public DateTime Age
+		{
+			get { return this.GetPropertyValue<DateTime>("age"); }
+		}
+
+		///<summary>
+		/// BirthdayDate
+		///</summary>
+		[ImplementPropertyType("birthdayDate")]
+		public DateTime BirthdayDate
+		{
+			get { return this.GetPropertyValue<DateTime>("birthdayDate"); }
+		}
+
+		///<summary>
+		/// Email
+		///</summary>
+		[ImplementPropertyType("email")]
+		public string Email
+		{
+			get { return this.GetPropertyValue<string>("email"); }
+		}
+
+		///<summary>
+		/// Telephone
+		///</summary>
+		[ImplementPropertyType("telephone")]
+		public string Telephone
+		{
+			get { return this.GetPropertyValue<string>("telephone"); }
+		}
+
+		///<summary>
+		/// UserName
+		///</summary>
+		[ImplementPropertyType("userName")]
+		public string UserName
+		{
+			get { return this.GetPropertyValue<string>("userName"); }
+		}
 	}
 }

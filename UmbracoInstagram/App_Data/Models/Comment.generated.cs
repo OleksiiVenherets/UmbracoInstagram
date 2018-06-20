@@ -55,15 +55,6 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// CommentId
-		///</summary>
-		[ImplementPropertyType("commentId")]
-		public int CommentId
-		{
-			get { return this.GetPropertyValue<int>("commentId"); }
-		}
-
-		///<summary>
 		/// CommentText
 		///</summary>
 		[ImplementPropertyType("commentText")]

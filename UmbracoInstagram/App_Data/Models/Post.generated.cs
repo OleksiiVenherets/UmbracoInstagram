@@ -55,15 +55,6 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// PostId
-		///</summary>
-		[ImplementPropertyType("postId")]
-		public int PostId
-		{
-			get { return this.GetPropertyValue<int>("postId"); }
-		}
-
-		///<summary>
 		/// PostImage
 		///</summary>
 		[ImplementPropertyType("postImage")]

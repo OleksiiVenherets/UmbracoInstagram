@@ -28,6 +28,8 @@ namespace UmbracoInstagram.Models
         [Compare("Password", ErrorMessage = "Passwords did not match")]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
+
+        
     }
 }
 

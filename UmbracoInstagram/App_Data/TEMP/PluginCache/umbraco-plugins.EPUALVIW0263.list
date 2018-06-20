@@ -291,6 +291,8 @@ Umbraco.ModelsBuilder.Validation.MediaTypeModelValidator, Umbraco.ModelsBuilder,
 Umbraco.ModelsBuilder.Validation.MemberTypeModelValidator, Umbraco.ModelsBuilder, Version=3.0.10.102, Culture=neutral, PublicKeyToken=null
 Umbraco.ModelsBuilder.Umbraco.ModelsBuilderApplication, Umbraco.ModelsBuilder, Version=3.0.10.102, Culture=neutral, PublicKeyToken=null
 Umbraco.ModelsBuilder.Umbraco.ModelsBuilderBackOfficeController, Umbraco.ModelsBuilder, Version=3.0.10.102, Culture=neutral, PublicKeyToken=null
+UmbracoInstagram.Controllers.MemberController, UmbracoInstagram, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+UmbracoInstagram.Controllers.SiteLayoutController, UmbracoInstagram, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.Strategies.RelateOnCopyHandler, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.Strategies.RelateOnTrashHandler, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.PropertyEditors.PropertyValueConverterBase, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
@@ -489,9 +491,6 @@ umbraco.editorControls.colorpicker.ColorPickerDataType, umbraco.editorControls, 
 umbraco.editorControls.checkboxlist.checkboxListDataType, umbraco.editorControls, Version=1.0.6684.15735, Culture=neutral, PublicKeyToken=null
 umbraco.editorControls.PickerRelations.PickerRelationsDataType, umbraco.editorControls, Version=1.0.6684.15735, Culture=neutral, PublicKeyToken=null
 umbraco.editorControls.PickerRelations.PickerRelationsEventHandler, umbraco.editorControls, Version=1.0.6684.15735, Culture=neutral, PublicKeyToken=null
-UmbracoInstagram.EventHandlers.UmbracoInstagramEventHandler, UmbracoInstagram, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-UmbracoInstagram.Controllers.MemberController, UmbracoInstagram, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-UmbracoInstagram.Controllers.SiteLayoutController, UmbracoInstagram, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 
 umbraco.interfaces.IApplicationStartupHandler
 
@@ -545,7 +544,6 @@ Umbraco.Core.Strategies.RelateOnTrashHandler, Umbraco.Core, Version=1.0.6684.157
 Umbraco.Core.Models.Identity.IdentityModelMappings, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.Auditing.AuditEventHandler, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
 umbraco.editorControls.PickerRelations.PickerRelationsEventHandler, umbraco.editorControls, Version=1.0.6684.15735, Culture=neutral, PublicKeyToken=null
-UmbracoInstagram.EventHandlers.UmbracoInstagramEventHandler, UmbracoInstagram, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter
 
@@ -678,38 +676,4 @@ Umbraco.Web.PublishedContentModels.Post, UmbracoInstagram, Version=1.0.0.0, Cult
 Umbraco.Web.PublishedContentModels.Profile, UmbracoInstagram, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedContentModels.Register, UmbracoInstagram, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedContentModels.Wall, UmbracoInstagram, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-
-Umbraco.Core.Persistence.Mappers.BaseMapper
-Umbraco.Core.Persistence.Mappers.MapperForAttribute
-Umbraco.Core.Persistence.Mappers.AccessMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.AuditEntryMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.AuditMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.ConsentMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.DomainMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.ExternalLoginMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.MigrationEntryMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.UserGroupMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.TaskTypeMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.MemberGroupMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.TagMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.TemplateMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.MacroMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.MemberMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.MemberTypeMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.ContentMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.ContentTypeMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.DataTypeDefinitionMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.DictionaryMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.DictionaryTranslationMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.LanguageMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.MediaMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.MediaTypeMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.PropertyGroupMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.PropertyMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.PropertyTypeMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.RelationMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.RelationTypeMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.ServerRegistrationMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.UmbracoEntityMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
-Umbraco.Core.Persistence.Mappers.UserMapper, Umbraco.Core, Version=1.0.6684.15725, Culture=neutral, PublicKeyToken=null
 

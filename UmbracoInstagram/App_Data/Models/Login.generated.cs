@@ -44,5 +44,23 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
+
+		///<summary>
+		/// Password
+		///</summary>
+		[ImplementPropertyType("password")]
+		public string Password
+		{
+			get { return this.GetPropertyValue<string>("password"); }
+		}
+
+		///<summary>
+		/// UserName
+		///</summary>
+		[ImplementPropertyType("userName")]
+		public string UserName
+		{
+			get { return this.GetPropertyValue<string>("userName"); }
+		}
 	}
 }

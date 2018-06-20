@@ -1,6 +1,5 @@
 ﻿using System.Web.Mvc;
 using System.Web.Security;
-using Umbraco.Core.Models;
 using Umbraco.Web.Mvc;
 using UmbracoInstagram.Abstract;
 using UmbracoInstagram.Models;
@@ -10,20 +9,21 @@ namespace UmbracoInstagram.Controllers
 {
     public class MemberController : SurfaceController
     {
-        private readonly IAutorizationService _autorizationService;
+        private readonly IUmbracoContextWrapper _umbracoContextWrapper;
 
-        public MemberController(IAutorizationService autorizationService)
+        public MemberController(IUmbracoContextWrapper umbracoContextWrapper)
         {
-            _autorizationService = autorizationService;
+            _umbracoContextWrapper = umbracoContextWrapper;
         }
-
+                
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult SubmitLogin(LoginModel model)
         {
+            var autorizationService = new AutorizationService(_umbracoContextWrapper.GetMemberService());
             if (ModelState.IsValid)
             {
-                if ( _autorizationService.IsValidate(model))
+                if ( autorizationService.IsValidate(model))
                 {
                     FormsAuthentication.SetAuthCookie(model.Username, false);
                     UrlHelper myHelper = new UrlHelper(HttpContext.Request.RequestContext);
@@ -49,17 +49,17 @@ namespace UmbracoInstagram.Controllers
             if (!ModelState.IsValid)
                 return CurrentUmbracoPage();
 
-            var memberService = Services.MemberService;
-            if (_autorizationService.IsEmailAddressExists(model.Email))
+            var autorizationService = new AutorizationService(_umbracoContextWrapper.GetMemberService());
+            if (autorizationService.IsEmailAddressExists(model.Email))
             {
                 ModelState.AddModelError("", Umbraco.GetDictionaryValue("RegisterError"));
                 return CurrentUmbracoPage();
             }
 
-            _autorizationService.Register(model);
+            autorizationService.Register(model);
 
             Members.Login(model.Email, model.Password);
-
+            
             return Redirect("/wall/");
         }
 
@@ -68,6 +68,8 @@ namespace UmbracoInstagram.Controllers
             TempData.Clear();
             Session.Clear();
             FormsAuthentication.SignOut();
+
+
             return Redirect("/");
         }
     }
