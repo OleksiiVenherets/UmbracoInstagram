@@ -19,11 +19,13 @@ namespace UmbracoInstagram.Models
 
         [Display(Name = "Password")]
         [Required]
+        [StringLength(100, MinimumLength = 10, ErrorMessage = "The lenght of psassword must be 10 or more symbols")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [Display(Name = "Confirm password")]
         [Required]
+        [Compare("Password", ErrorMessage = "Passwords did not match")]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
     }

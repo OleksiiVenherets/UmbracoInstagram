@@ -1,15 +1,20 @@
 ﻿using System.Web.Mvc;
 using System.Web.Security;
+using Umbraco.Core.Models;
 using Umbraco.Web.Mvc;
+using UmbracoInstagram.Abstract;
 using UmbracoInstagram.Models;
+using UmbracoInstagram.Services;
 
 namespace UmbracoInstagram.Controllers
 {
     public class MemberController : SurfaceController
     {
-        public ActionResult RenderLogin()
+        private readonly IAutorizationService _autorizationService;
+
+        public MemberController(IAutorizationService autorizationService)
         {
-            return PartialView("_Login", new LoginModel());
+            _autorizationService = autorizationService;
         }
 
         [HttpPost]
@@ -18,7 +23,7 @@ namespace UmbracoInstagram.Controllers
         {
             if (ModelState.IsValid)
             {
-                if ( Membership.ValidateUser(model.Username, model.Password))
+                if ( _autorizationService.IsValidate(model))
                 {
                     FormsAuthentication.SetAuthCookie(model.Username, false);
                     UrlHelper myHelper = new UrlHelper(HttpContext.Request.RequestContext);
@@ -33,7 +38,7 @@ namespace UmbracoInstagram.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The username or password provided is incorrect.");
+                    ModelState.AddModelError("", Umbraco.GetDictionaryValue("LoginError"));
                 }
             }
             return CurrentUmbracoPage();
@@ -45,21 +50,13 @@ namespace UmbracoInstagram.Controllers
                 return CurrentUmbracoPage();
 
             var memberService = Services.MemberService;
-            if (memberService.GetByEmail(model.Email) != null)
+            if (_autorizationService.IsEmailAddressExists(model.Email))
             {
-                ModelState.AddModelError("", "Member already exists");
+                ModelState.AddModelError("", Umbraco.GetDictionaryValue("RegisterError"));
                 return CurrentUmbracoPage();
             }
-            if (model.Password!= model.ConfirmPassword)
-            {
-                ModelState.AddModelError("", "Passwords did not match");
-                return CurrentUmbracoPage();
-            }
-            var member = memberService.CreateMemberWithIdentity(model.Email, model.Email, model.Name, "Member");
 
-            memberService.Save(member);
-
-            memberService.SavePassword(member, model.Password);
+            _autorizationService.Register(model);
 
             Members.Login(model.Email, model.Password);
 
