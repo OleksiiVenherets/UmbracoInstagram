@@ -4,7 +4,6 @@ using Umbraco.Core.Models;
 using Umbraco.Web.Mvc;
 using UmbracoInstagram.Abstract;
 using UmbracoInstagram.Models;
-using UmbracoInstagram.Services;
 
 namespace UmbracoInstagram.Controllers
 {
@@ -59,7 +58,7 @@ namespace UmbracoInstagram.Controllers
             _autorizationService.Register(model);
 
             Members.Login(model.Email, model.Password);
-
+            
             return Redirect("/wall/");
         }
 
@@ -68,6 +67,8 @@ namespace UmbracoInstagram.Controllers
             TempData.Clear();
             Session.Clear();
             FormsAuthentication.SignOut();
+
+
             return Redirect("/");
         }
     }

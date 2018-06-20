@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Umbraco.Core.Services;
 
 namespace UmbracoInstagram.Controllers
 {
