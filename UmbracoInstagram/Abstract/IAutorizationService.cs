@@ -13,5 +13,7 @@ namespace UmbracoInstagram.Abstract
         void Register(MemberModel model);
         bool IsValidate(LoginModel model);
         bool IsEmailAddressExists(string emailAddress);
+
+        bool Login(string login, string pwd);
     }
 }

@@ -9,6 +9,18 @@ namespace UmbracoInstagram.Wrappers
 {
     public class UmbracoContextWrapper : IUmbracoContextWrapper
     {
+        public UmbracoContext UmbracoContext { get; private set; }
+
+        public UmbracoContextWrapper(UmbracoContext umbContext)
+        {
+            this.UmbracoContext = umbContext;
+        }
+
+        public MembershipHelper GetMembershipHelper()
+        {
+            return new MembershipHelper(this.UmbracoContext);
+        }
+
         public ContextualPublishedContentCache GetContentCache()
         {
             return UmbracoContext.Current.ContentCache;
