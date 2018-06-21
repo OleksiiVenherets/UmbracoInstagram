@@ -14,6 +14,7 @@ namespace UmbracoInstagram.Abstract
 {
     public interface IUmbracoContextWrapper
     {
+        MembershipHelper GetMembershipHelper();
         ContextualPublishedContentCache GetContentCache();
         UmbracoContext GetCurrentUmbracoContext();
         HttpContextBase GetHttpContext();

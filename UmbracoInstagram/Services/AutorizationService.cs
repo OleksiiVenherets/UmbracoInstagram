@@ -2,7 +2,6 @@
 using UmbracoInstagram.Abstract;
 using UmbracoInstagram.Models;
 using Umbraco.Core.Models;
-using System.Web.Security;
 
 namespace UmbracoInstagram.Services
 {
@@ -10,9 +9,15 @@ namespace UmbracoInstagram.Services
     {
         private readonly IMemberService _memberService;
 
-        public AutorizationService(IMemberService memberService)
+        private readonly IUmbracoContextWrapper _umbWrapper;
+
+        private readonly ISystemMembershipService _systemMembershipService;
+
+        public AutorizationService(IMemberService memberService, IUmbracoContextWrapper umbWrapper, ISystemMembershipService systemMembershipService)
         {
             _memberService = memberService;
+            _umbWrapper = umbWrapper;
+            _systemMembershipService = systemMembershipService;
         }
 
         public bool IsEmailAddressExists(string emailAddress)
@@ -23,7 +28,7 @@ namespace UmbracoInstagram.Services
 
         public bool IsValidate(LoginModel model)
         {
-            return Membership.ValidateUser(model.Username, model.Password);
+            return _systemMembershipService.ValidateUser(model.Username, model.Password);
         }
 
         public void Register(MemberModel model)
@@ -32,6 +37,12 @@ namespace UmbracoInstagram.Services
             _memberService.Save(member);
             _memberService.SavePassword(member, model.Password);
             _memberService.AssignRole(member.Id, "new");
+        }
+
+        public bool Login(string login, string pwd)
+        {
+            var membershipHelper = _umbWrapper.GetMembershipHelper();
+            return membershipHelper.Login(login, pwd);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Security;
 using Umbraco.Core.Models;
+using Umbraco.Core.Services;
 using Umbraco.Web.Mvc;
 using UmbracoInstagram.Abstract;
 using UmbracoInstagram.Models;
@@ -48,7 +49,6 @@ namespace UmbracoInstagram.Controllers
             if (!ModelState.IsValid)
                 return CurrentUmbracoPage();
 
-            var memberService = Services.MemberService;
             if (_autorizationService.IsEmailAddressExists(model.Email))
             {
                 ModelState.AddModelError("", Umbraco.GetDictionaryValue("RegisterError"));
@@ -57,7 +57,7 @@ namespace UmbracoInstagram.Controllers
 
             _autorizationService.Register(model);
 
-            Members.Login(model.Email, model.Password);
+            _autorizationService.Login(model.Email, model.Password);
             
             return Redirect("/wall/");
         }

@@ -28,7 +28,7 @@ namespace UmbracoInstagram
             builder.RegisterApiControllers(typeof(Global).Assembly);// Web API
 
             // Add types to be resolved
-            RegisterTypes(builder, ApplicationContext.Current);
+            RegisterTypes(builder);
 
             // Configure Http and Controller Resolvers
             var container = builder.Build();
@@ -67,12 +67,17 @@ namespace UmbracoInstagram
 
         }
     
-        private static void RegisterTypes(ContainerBuilder builder, ApplicationContext applicationContext)
+        private static void RegisterTypes(ContainerBuilder builder)
         {
-            builder.RegisterInstance(applicationContext.Services.MemberService)
-                .As<IMemberService>();
+            //builder.RegisterInstance(applicationContext.Services.MemberService).As<IMemberService>();
+
             builder.RegisterType<AutorizationService>().As<IAutorizationService>();
-            builder.RegisterType<UmbracoContextWrapper>().As<IUmbracoContextWrapper>();
+            //builder.RegisterType<UmbracoContextWrapper>().As<IUmbracoContextWrapper>();
+
+            builder.Register<IUmbracoContextWrapper>(ctx => new UmbracoContextWrapper(Umbraco.Web.UmbracoContext.Current)).InstancePerRequest();
+
+            builder.Register(ctx => ApplicationContext.Current.Services.MemberService).AsImplementedInterfaces().InstancePerRequest();
+
         }
     }
 }
