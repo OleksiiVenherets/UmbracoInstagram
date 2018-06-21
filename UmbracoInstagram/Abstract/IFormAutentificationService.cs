@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace UmbracoInstagram.Abstract
 {
-    public interface IHttpContextWrapper
+    public interface IFormAutentificationService
     {
-        HttpContextBase Context { get; }
+        void SetAuthCookie(string userName, bool isCreatePersistanceCookie);
+        void Logout();
     }
 }

@@ -9,14 +9,12 @@
 //------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Web;
 using Umbraco.Core.Models;
 using Umbraco.Core.Models.PublishedContent;
-using Umbraco.Web;
 using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
+using UmbracoInstagram.Abstract.IModels;
 
 namespace Umbraco.Web.PublishedContentModels
 {

@@ -15,5 +15,8 @@ namespace UmbracoInstagram.Abstract
         bool IsEmailAddressExists(string emailAddress);
 
         bool Login(string login, string pwd);
+        void Logout();
+        void SetAuthCookie(string userName, bool isCreatePersistanceCookie);
+        string GetDictionaryValue(string name);
     }
 }

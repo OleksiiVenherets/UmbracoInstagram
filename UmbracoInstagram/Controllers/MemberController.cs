@@ -25,7 +25,7 @@ namespace UmbracoInstagram.Controllers
             {
                 if ( _autorizationService.IsValidate(model))
                 {
-                    FormsAuthentication.SetAuthCookie(model.Username, false);
+                    _autorizationService.SetAuthCookie(model.Username, false);
                     UrlHelper myHelper = new UrlHelper(HttpContext.Request.RequestContext);
                     if (myHelper.IsLocalUrl("/wall/"))
                     {
@@ -38,7 +38,7 @@ namespace UmbracoInstagram.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", Umbraco.GetDictionaryValue("LoginError"));
+                    ModelState.AddModelError("", _autorizationService.GetDictionaryValue("LoginError"));
                 }
             }
             return CurrentUmbracoPage();
@@ -51,7 +51,7 @@ namespace UmbracoInstagram.Controllers
 
             if (_autorizationService.IsEmailAddressExists(model.Email))
             {
-                ModelState.AddModelError("", Umbraco.GetDictionaryValue("RegisterError"));
+                ModelState.AddModelError("", _autorizationService.GetDictionaryValue("RegisterError"));
                 return CurrentUmbracoPage();
             }
 
@@ -66,8 +66,7 @@ namespace UmbracoInstagram.Controllers
         {
             TempData.Clear();
             Session.Clear();
-            FormsAuthentication.SignOut();
-
+            _autorizationService.Logout();
 
             return Redirect("/");
         }

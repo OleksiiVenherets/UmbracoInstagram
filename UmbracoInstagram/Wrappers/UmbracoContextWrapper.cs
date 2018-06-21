@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using Umbraco.Web;
+using Umbraco.Web.Mvc;
 using Umbraco.Web.PublishedCache;
 using Umbraco.Web.Routing;
 using Umbraco.Web.Security;
@@ -23,32 +24,38 @@ namespace UmbracoInstagram.Wrappers
 
         public ContextualPublishedContentCache GetContentCache()
         {
-            return UmbracoContext.Current.ContentCache;
+            return this.UmbracoContext.ContentCache;
         }
 
         public ContextualPublishedMediaCache GetMediaCache()
         {
-            return UmbracoContext.Current.MediaCache;
+            return this.UmbracoContext.MediaCache;
         }
 
         public UmbracoContext GetCurrentUmbracoContext()
         {
-            return UmbracoContext.Current;
+            return this.UmbracoContext;
         }
 
         public HttpContextBase GetHttpContext()
         {
-            return UmbracoContext.Current.HttpContext;
+            return this.UmbracoContext.HttpContext;
         }
 
         public RoutingContext GetRoutingContext()
         {
-            return UmbracoContext.Current.RoutingContext;
+            return this.UmbracoContext.RoutingContext;
         }
 
         public WebSecurity GetSecurity()
         {
-            return UmbracoContext.Current.Security;
+            return this.UmbracoContext.Security;
+        }
+
+        public string GetDictionaryValue(string name)
+        {
+            var umbracoHelper = new UmbracoHelper();
+            return umbracoHelper.GetDictionaryValue(name);
         }
     }
 }

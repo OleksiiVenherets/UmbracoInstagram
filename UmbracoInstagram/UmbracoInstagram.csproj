@@ -433,7 +433,6 @@
     <Content Include="App_Data\TEMP\ExamineIndexes\Internal\Index\_4.cfs" />
     <Content Include="App_Data\TEMP\PluginCache\umbraco-plugins.EPUALVIW0263.hash" />
     <Content Include="App_Data\TEMP\PluginCache\umbraco-plugins.EPUALVIW0263.list" />
-    <Content Include="App_Data\umbraco.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -446,7 +445,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IAutorizationService.cs" />
+    <Compile Include="Abstract\ICrudPostService.cs" />
+    <Compile Include="Abstract\IFormAutentificationService.cs" />
     <Compile Include="Abstract\IHttpContextWrapper.cs" />
+    <Compile Include="Abstract\IModels\IPost.cs" />
     <Compile Include="Abstract\ISystemMembershipService.cs" />
     <Compile Include="Abstract\IUmbracoContextWrapper.cs" />
     <Compile Include="App_Data\Models\Comment.generated.cs" />
@@ -461,7 +463,6 @@
     <Compile Include="App_Data\Models\Profile.generated.cs" />
     <Compile Include="App_Data\Models\Register.generated.cs" />
     <Compile Include="App_Data\Models\Wall.generated.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\SiteLayoutController.cs" />
@@ -470,8 +471,11 @@
     </Compile>
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MemberModel.cs" />
+    <Compile Include="Models\PartialModels\Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AutorizationService.cs" />
+    <Compile Include="Services\CrudPostService.cs" />
+    <Compile Include="Services\FormAutentificationService.cs" />
     <Compile Include="Services\SystemMembershipService.cs" />
     <Compile Include="Wrappers\UmbracoContextWrapper.cs" />
   </ItemGroup>
@@ -524,9 +528,10 @@
     <Content Include="Views\Partials\Member\_Logout.cshtml" />
     <Content Include="Views\Register.cshtml" />
     <Content Include="Views\Partials\Member\_Register.cshtml" />
-    <Content Include="Views\Post.cshtml" />
     <Content Include="Views\Error.cshtml" />
     <Content Include="Views\Partials\_Error.cshtml" />
+    <Content Include="Views\CreatePost.cshtml" />
+    <Content Include="Views\Partials\Post\_CreatePost.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

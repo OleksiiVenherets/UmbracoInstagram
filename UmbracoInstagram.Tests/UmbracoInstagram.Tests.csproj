@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{407AD640-3EF9-4D90-B467-42A84B36B146}</ProjectGuid>
+    <ProjectGuid>{09439A56-88FF-4CD2-B698-2645ED2C9022}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UmbracoInstagram.Tests</RootNamespace>

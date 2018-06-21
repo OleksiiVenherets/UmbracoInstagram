@@ -36,5 +36,10 @@ namespace UmbracoInstagram.Controllers
         {
             return PartialView($"{_PATH}_Error.cshtml", null);
         }
+
+        public ActionResult RenderCreatePost()
+        {
+            return PartialView($"{_PATH}Post/_CreatePost.cshtml", null);
+        }
     }
 }

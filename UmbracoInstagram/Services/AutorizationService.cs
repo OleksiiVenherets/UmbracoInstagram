@@ -13,11 +13,14 @@ namespace UmbracoInstagram.Services
 
         private readonly ISystemMembershipService _systemMembershipService;
 
-        public AutorizationService(IMemberService memberService, IUmbracoContextWrapper umbWrapper, ISystemMembershipService systemMembershipService)
+        private readonly IFormAutentificationService _formAutentificationService;
+
+        public AutorizationService(IMemberService memberService, IUmbracoContextWrapper umbWrapper, ISystemMembershipService systemMembershipService, IFormAutentificationService formAutentificationService)
         {
             _memberService = memberService;
             _umbWrapper = umbWrapper;
             _systemMembershipService = systemMembershipService;
+            _formAutentificationService = formAutentificationService;
         }
 
         public bool IsEmailAddressExists(string emailAddress)
@@ -43,6 +46,21 @@ namespace UmbracoInstagram.Services
         {
             var membershipHelper = _umbWrapper.GetMembershipHelper();
             return membershipHelper.Login(login, pwd);
+        }
+
+        public void Logout()
+        {
+            _formAutentificationService.Logout();
+        }
+
+        public void SetAuthCookie(string userName, bool isCreatePersistanceCookie)
+        {
+            _formAutentificationService.SetAuthCookie(userName, isCreatePersistanceCookie);
+        }
+
+        public string GetDictionaryValue(string name)
+        {
+            return _umbWrapper.GetDictionaryValue(name);
         }
     }
 }

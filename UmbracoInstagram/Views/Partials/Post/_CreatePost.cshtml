@@ -1,0 +1,13 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<UmbracoInstagram.Abstract.IModels.IPost>
+@using (Html.BeginUmbracoForm("CreatePost", "post", System.Web.Mvc.FormMethod.Post, new { id = "createpost" }))
+{
+
+    <input id="PostImage" title="Upload a product image"
+           type="file" name="file" />
+    @Html.TextAreaFor(m => m.PostText);
+
+    <button name="createpost" type="submit">AddPost</button>
+}
+
+
+

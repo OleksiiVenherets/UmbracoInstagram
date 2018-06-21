@@ -21,5 +21,6 @@ namespace UmbracoInstagram.Abstract
         ContextualPublishedMediaCache GetMediaCache();
         RoutingContext GetRoutingContext();
         WebSecurity GetSecurity();
+        string GetDictionaryValue(string name);
     }
 }

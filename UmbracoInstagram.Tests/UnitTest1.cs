@@ -47,12 +47,9 @@ namespace UmbracoInstagram.Tests
             
 
             var mock = new Mock<IUmbracoContextWrapper>();
-            //mock.Setup(a => a.GetCurrentUmbracoContext()).Returns(UmbracoContext.Current);
-            //var context = mock.Object;
 
             var autorizationService = new Mock<IAutorizationService>();
 
-            //var memberService = ApplicationContext.Current.Services.MemberService;
             var memberController = new MemberController(autorizationService.Object);
 
             var expectedResult = "/wall/";
@@ -67,33 +64,15 @@ namespace UmbracoInstagram.Tests
         [TestMethod]
         public void TestMethod2()
         {
-            //var appCtx = ApplicationContext.EnsureContext(
-            //    new DatabaseContext(Mock.Of(), Mock.Of(), new SqlSyntaxProviders(new[] { Mock.Of() })),
-            //    new ServiceContext(),
-            //    CacheHelper.CreateDisabledCacheHelper(),
-            //    new ProfilingLogger(
-            //        Mock.Of(),
-            //        Mock.Of()), true);
-
-            //var ctx = UmbracoContext.EnsureContext(
-            //    Mock.Of(),
-            //    appCtx,
-            //    new Mock(null, null).Object,
-            //    Mock.Of(),
-            //    Enumerable.Empty(), true);
             var mock = new Mock<IUmbracoContextWrapper>();
-            var memberService = new Mock<IMemberService>();
-            var systemMembershipService = new Mock<ISystemMembershipService>();
-            systemMembershipService.Setup(l => l.ValidateUser(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
-            var memberController = new MemberController(new AutorizationService(memberService.Object, mock.Object, systemMembershipService.Object));
 
-            var expectedResult = "/wall/";
-            var newMember = new LoginModel { Username = "testuser@gmail.com",  Password = "1111111111"};
+            var autorizationService = new Mock<IAutorizationService>();
+
+            var memberController = new MemberController(autorizationService.Object);
+
+            var newMember = new LoginModel { Username = "zxc@gmail.com",  Password = "1111111111"};
             var result = memberController.SubmitLogin(newMember);
-            Assert.AreEqual(result.ToString(), expectedResult);
-
+            Assert.IsInstanceOfType(result, typeof(Umbraco.Web.Mvc.UmbracoPageResult));
         }
     }
 }
-
-
