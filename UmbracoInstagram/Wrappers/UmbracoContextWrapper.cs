@@ -1,6 +1,4 @@
 ﻿using System.Web;
-using Umbraco.Core;
-using Umbraco.Core.Services;
 using Umbraco.Web;
 using Umbraco.Web.PublishedCache;
 using Umbraco.Web.Routing;
@@ -11,6 +9,18 @@ namespace UmbracoInstagram.Wrappers
 {
     public class UmbracoContextWrapper : IUmbracoContextWrapper
     {
+        public UmbracoContext UmbracoContext { get; private set; }
+
+        public UmbracoContextWrapper(UmbracoContext umbContext)
+        {
+            this.UmbracoContext = umbContext;
+        }
+
+        public MembershipHelper GetMembershipHelper()
+        {
+            return new MembershipHelper(this.UmbracoContext);
+        }
+
         public ContextualPublishedContentCache GetContentCache()
         {
             return UmbracoContext.Current.ContentCache;
@@ -39,11 +49,6 @@ namespace UmbracoInstagram.Wrappers
         public WebSecurity GetSecurity()
         {
             return UmbracoContext.Current.Security;
-        }
-
-        public IMemberService GetMemberService()
-        {
-            return ApplicationContext.Current.Services.MemberService; 
         }
     }
 }
