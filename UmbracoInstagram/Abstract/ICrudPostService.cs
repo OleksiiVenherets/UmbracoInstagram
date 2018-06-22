@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using umbraco.NodeFactory;
+using Umbraco.Core.Models;
 using UmbracoInstagram.Abstract.IModels;
+using UmbracoInstagram.Models;
 
 namespace UmbracoInstagram.Abstract
 {
     public interface ICrudPostService
     {
-        void CreatePost(IPost model);
-        IPost GetPost(string id);
+        void CreatePost(PostViewModel model);
+        List<GetPostsViewModel> GetPosts();
         void UpdatePost(IPost model, string id);
         void DeletePost(string id);
     }

@@ -1,7 +1,25 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
-@{
-    Layout = "WebBase.cshtml";
+﻿@*@inherits Umbraco.Web.Mvc.UmbracoTemplatePage*@
+@*@model IEnumerable<IContent>
+    @{
+        Layout = "WebBase.cshtml";
+    }*@
+@model List<UmbracoInstagram.Models.GetPostsViewModel>
+<ul class="nav navbar-nav navbar-right">
+    <li><a href="/Wall/CreatePost/">CreatePost</a></li>
+    @*<li><a href="/Login/">Login</a></li>*@
+</ul>
+
+
+@foreach (var post in Model)
+{
+    <img src=@post.PostImage>
+    <p>@post.PostText</p>
+    <p>Date Created: @post.PostDate</p>
 }
 
 @* the fun starts here *@
 @{Html.RenderAction("RenderLogout", "SiteLayout");}
+
+
+
+

@@ -56,7 +56,9 @@ namespace UmbracoInstagram
             builder.Register(ctx => new UmbracoContextWrapper(Umbraco.Web.UmbracoContext.Current)).As<IUmbracoContextWrapper>().InstancePerLifetimeScope();
 
             builder.Register(ctx => ApplicationContext.Current.Services.MemberService).As<IMemberService>().InstancePerLifetimeScope();
-            builder.Register(ctx => ApplicationContext.Current.Services.ConsentService).As<IContentService>().InstancePerLifetimeScope();
+            builder.RegisterInstance(ApplicationContext.Current.Services.ContentService).As<IContentService>();
+            builder.RegisterInstance(ApplicationContext.Current.Services.MediaService).As<IMediaService>();
+            //builder.Register(ctx => ApplicationContext.Current.Services.ConsentService).As<IContentService>().SingleInstance();
 
         }
     }

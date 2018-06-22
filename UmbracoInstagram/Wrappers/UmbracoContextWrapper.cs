@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 using Umbraco.Web;
 using Umbraco.Web.Mvc;
 using Umbraco.Web.PublishedCache;
@@ -56,6 +57,11 @@ namespace UmbracoInstagram.Wrappers
         {
             var umbracoHelper = new UmbracoHelper();
             return umbracoHelper.GetDictionaryValue(name);
+        }
+
+        public int GetCurrentPageId()
+        {
+            return Convert.ToInt32(this.UmbracoContext.PageId);
         }
     }
 }

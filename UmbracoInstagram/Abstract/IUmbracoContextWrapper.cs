@@ -22,5 +22,6 @@ namespace UmbracoInstagram.Abstract
         RoutingContext GetRoutingContext();
         WebSecurity GetSecurity();
         string GetDictionaryValue(string name);
+        int GetCurrentPageId();
     }
 }

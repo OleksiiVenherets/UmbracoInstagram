@@ -1,5 +1,5 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<UmbracoInstagram.Abstract.IModels.IPost>
-@using (Html.BeginUmbracoForm("CreatePost", "post", System.Web.Mvc.FormMethod.Post, new { id = "createpost" }))
+@using (Html.BeginUmbracoForm("CreatePost", "post", System.Web.Mvc.FormMethod.Post, new { id = "createpost", enctype = "multipart/form-data" }))
 {
 
     <input id="PostImage" title="Upload a product image"
@@ -10,4 +10,6 @@
 }
 
 
-
+@*@using (Html.BeginForm("Edit", "Visit", null, FormMethod.Post,
+    new { enctype = "multipart/form-data" }))
+{*@ 

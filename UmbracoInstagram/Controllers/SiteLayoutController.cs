@@ -41,5 +41,10 @@ namespace UmbracoInstagram.Controllers
         {
             return PartialView($"{_PATH}Post/_CreatePost.cshtml", null);
         }
+
+        public ActionResult RenderWall()
+        {
+            return  Redirect("~/Wall/");
+        }
     }
 }
