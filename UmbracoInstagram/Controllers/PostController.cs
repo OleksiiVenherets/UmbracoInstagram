@@ -25,9 +25,9 @@ namespace UmbracoInstagram.Controllers
 
         public ActionResult CreatePost(PostViewModel model, HttpPostedFileBase file)
         {
-            model.PostDate = DateTime.Now.Date;
+            model.PostDate = DateTime.Now;
             model.PostImage = Path.GetFullPath(file.FileName); ;
-            model.MemberId  = _systemMembershipService.GetMemberId();
+            model.MemberID  = _systemMembershipService.GetMemberId();
             if (ModelState.IsValid)
             {
                 _crudPostService.CreatePost(model);

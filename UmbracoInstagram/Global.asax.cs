@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
+using AutoMapper;
+using AutoMapper.Mappers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,8 +47,6 @@ namespace UmbracoInstagram
     
         private static void RegisterTypes(ContainerBuilder builder)
         {
-            //builder.RegisterInstance(applicationContext.Services.MemberService).As<IMemberService>();
-
             builder.RegisterType<AutorizationService>().As<IAutorizationService>();
 
             builder.RegisterType<SystemMembershipService>().As<ISystemMembershipService>();
@@ -58,8 +58,17 @@ namespace UmbracoInstagram
             builder.Register(ctx => ApplicationContext.Current.Services.MemberService).As<IMemberService>().InstancePerLifetimeScope();
             builder.RegisterInstance(ApplicationContext.Current.Services.ContentService).As<IContentService>();
             builder.RegisterInstance(ApplicationContext.Current.Services.MediaService).As<IMediaService>();
-            //builder.Register(ctx => ApplicationContext.Current.Services.ConsentService).As<IContentService>().SingleInstance();
 
+            builder.Register(c => {
+                var s = new ConfigurationStore(new TypeMapFactory(), MapperRegistry.Mappers);
+                s.CreateMap<Umbraco.Web.PublishedContentModels.Post, Models.PostViewModel>()
+                    .ForMember(l => l.PostText, opt => opt.MapFrom(l => l.PostText))
+                    .ForMember(l => l.PostDate, opt => opt.MapFrom(l => l.PostDate))
+                    .ForMember(l => l.MemberID, opt => opt.MapFrom(l => l.MemberID))
+                    .ForMember(l => l.PostImage, opt => opt.Ignore());
+                return s;
+            }).As<IConfigurationProvider>().SingleInstance();
+            builder.RegisterType<MappingEngine>().As<IMappingEngine>();
         }
     }
 }

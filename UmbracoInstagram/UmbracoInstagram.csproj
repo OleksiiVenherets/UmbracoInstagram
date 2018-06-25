@@ -470,7 +470,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\GetPostsViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MemberModel.cs" />
     <Compile Include="Models\PostViewModel.cs" />

@@ -14,6 +14,6 @@ namespace UmbracoInstagram.Abstract.IModels
         string PostImage { get; set; }
         string PostText { get; set; }
         int ParentId { get; set; }
-        int MemberId { get; set; }
+        int MemberID { get; set; }
     }
 }
