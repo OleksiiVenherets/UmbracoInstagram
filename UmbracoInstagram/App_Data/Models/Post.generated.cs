@@ -46,6 +46,15 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// memberID
+		///</summary>
+		[ImplementPropertyType("memberID")]
+		public int MemberID
+		{
+			get { return this.GetPropertyValue<int>("memberID"); }
+		}
+
+		///<summary>
 		/// PostDate
 		///</summary>
 		[ImplementPropertyType("postDate")]

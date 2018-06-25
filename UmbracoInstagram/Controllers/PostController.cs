@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Web;
 using System.Web.Mvc;
 using umbraco;
@@ -14,21 +15,24 @@ namespace UmbracoInstagram.Controllers
     public class PostController: SurfaceController
     {
         private readonly ICrudPostService _crudPostService;
+        private readonly ISystemMembershipService _systemMembershipService;
 
-        public PostController(ICrudPostService crudPostService)
+        public PostController(ICrudPostService crudPostService, ISystemMembershipService systemMembershipService)
         {
             _crudPostService = crudPostService;
+            _systemMembershipService = systemMembershipService;
         }
 
         public ActionResult CreatePost(PostViewModel model, HttpPostedFileBase file)
         {
             model.PostDate = DateTime.Now.Date;
-            model.PostImage = file;
+            model.PostImage = Path.GetFullPath(file.FileName); ;
+            model.MemberId  = _systemMembershipService.GetMemberId();
             if (ModelState.IsValid)
             {
                 _crudPostService.CreatePost(model);
             }
-            return Redirect("/wall/");
+            return RedirectToAction("ShowAllPosts", "Wall");
         }       
     }
 }

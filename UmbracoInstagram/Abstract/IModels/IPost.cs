@@ -11,8 +11,9 @@ namespace UmbracoInstagram.Abstract.IModels
     public interface IPost
     {
         DateTime PostDate { get; set; }
-        HttpPostedFileBase PostImage { get; set; }
+        string PostImage { get; set; }
         string PostText { get; set; }
         int ParentId { get; set; }
+        int MemberId { get; set; }
     }
 }

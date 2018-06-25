@@ -63,5 +63,10 @@ namespace UmbracoInstagram.Wrappers
         {
             return Convert.ToInt32(this.UmbracoContext.PageId);
         }
+
+        public UmbracoHelper GetUmbracoHelper()
+        {
+            return new UmbracoHelper(this.UmbracoContext);
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace UmbracoInstagram.Abstract
     public interface ICrudPostService
     {
         void CreatePost(PostViewModel model);
-        List<GetPostsViewModel> GetPosts();
+        List<PostViewModel> GetPosts();
         void UpdatePost(IPost model, string id);
         void DeletePost(string id);
     }

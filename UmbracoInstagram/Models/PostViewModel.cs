@@ -10,8 +10,9 @@ namespace UmbracoInstagram.Models
     public class PostViewModel : IPost
     {
         public DateTime PostDate { get; set; }
-        public HttpPostedFileBase PostImage { get; set; }
+        public string PostImage { get; set; }
         public string PostText { get; set; }
         public int ParentId { get; set; }
+        public int MemberId { get; set; }
     }
 }

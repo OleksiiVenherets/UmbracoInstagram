@@ -3,5 +3,6 @@
     public interface ISystemMembershipService
     {
         bool ValidateUser(string username, string password);
+        int GetMemberId();
     }
 }

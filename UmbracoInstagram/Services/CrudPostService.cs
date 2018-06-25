@@ -37,20 +37,21 @@ namespace UmbracoInstagram.Services
             int currentPageId = _umbracoContextWrapper.GetCurrentPageId();
             IContent currentContent = _contentService.GetById(currentPageId);
             model.ParentId = currentContent.ParentId;
-            int userId = 0;
-            
+
+
             var name = DateTime.Now.ToIsoString();
-            var originalPath = Path.GetFullPath(model.PostImage.FileName);
+     
             var newImage = _mediaService.CreateMedia(name, -1, "Image");
-            byte[] buffer = System.IO.File.ReadAllBytes(originalPath);
+            byte[] buffer = System.IO.File.ReadAllBytes(model.PostImage);
             MemoryStream strm = new MemoryStream(buffer);
             newImage.SetValue("umbracoFile", "myNewImage.png", strm);
             _mediaService.Save(newImage);
            
-            var content = _contentService.CreateContent(DateTime.Today.ToString("yy/MM/dd"), model.ParentId, "Post", userId);
+            var content = _contentService.CreateContent(DateTime.Today.ToString("yy/MM/dd"), model.ParentId, "Post");
             content.SetValue("postImage", newImage.Id);
             content.SetValue("postText", model.PostText);
             content.SetValue("postDate", model.PostDate);
+            content.SetValue("memberID", model.MemberId);
             _contentService.SaveAndPublishWithStatus(content);
         }
 
@@ -59,37 +60,41 @@ namespace UmbracoInstagram.Services
             throw new NotImplementedException();
         }
 
-        public List<GetPostsViewModel> GetPosts()
+        public List<PostViewModel> GetPosts()
         {
             IEnumerable <Node> nodes = uQuery.GetNodesByType("post");
             List<Node> newnodes = new List<Node>();
             foreach (var node in nodes)
             {
-                if (node.Name != "CreatePost")
+                if (node.Name != "CreatePost" && Convert.ToInt32(node.GetProperty("memberID").Value) == _systemMembershipService.GetMemberId())
                     newnodes.Add(node);
             }
 
-            List<GetPostsViewModel> posts = new List<GetPostsViewModel>();
+            List<PostViewModel> posts = new List<PostViewModel>();
 
-            UmbracoHelper uHelper = new UmbracoHelper(UmbracoContext.Current);
+            UmbracoHelper uHelper = _umbracoContextWrapper.GetUmbracoHelper();
             foreach (var node in newnodes)
             {
-                if (node.HasProperty("postImage"))
+                var content = node.GetProperty("postImage");
+                string nodeID = content != null ? content.Value.ToString() : "";
+                string url = "";
+                if (!string.IsNullOrWhiteSpace(nodeID))
                 {
-                    var content = uHelper.Media(node.GetProperty("postImage").Value);
-                    var url = content.umbracoFile;
+                    var media = uHelper.TypedMedia(nodeID);
+                    if (media != null)
+                    url = media.Url;
                     posts.Add(
-                        new GetPostsViewModel
-                        {
-                            PostText = node.GetProperty("postText").Value,
-                            PostDate = Convert.ToDateTime(node.GetProperty("postDate").Value),
-                            PostImage = url,
-                            CreatorId = node.CreatorID
-                        });
+                    new PostViewModel
+                    {
+                        PostText = node.GetProperty("postText").Value,
+                        PostDate = Convert.ToDateTime(node.GetProperty("postDate").Value),
+                        PostImage = url,
+                        MemberId = Convert.ToInt32(node.GetProperty("memberID").Value)
+                    });
                 }
+                }
+                return posts;
             }
-            return posts;
-        }
 
         public void UpdatePost(IPost model, string id)
         {

@@ -1,5 +1,5 @@
 ﻿@using Umbraco.Web
-@using (Html.BeginUmbracoForm("SubmitLogout", "Member", System.Web.Mvc.FormMethod.Get))
+@using (Html.BeginUmbracoForm("SubmitLogout", "Member", System.Web.Mvc.FormMethod.Get, new { id = "logout" }))
 {
-    <button name="login" type="submit">Logout</button>
+    <button name="logout" type="submit">Logout</button>
 }

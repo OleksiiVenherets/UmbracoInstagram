@@ -9,5 +9,12 @@ namespace UmbracoInstagram.Services
         {
             return Membership.ValidateUser(username, password);
         }
+
+        public int GetMemberId()
+        {
+            var member = Membership.GetUser();
+
+            return (int)Membership.GetUser(member.UserName).ProviderUserKey;
+        }
     }
 }

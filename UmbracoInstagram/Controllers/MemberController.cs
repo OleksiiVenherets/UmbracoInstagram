@@ -26,17 +26,7 @@ namespace UmbracoInstagram.Controllers
                 if ( _autorizationService.IsValidate(model))
                 {
                     _autorizationService.SetAuthCookie(model.Username, false);
-                    return RedirectToAction("ShowAllPosts", "Wall");
-                    //UrlHelper myHelper = new UrlHelper(HttpContext.Request.RequestContext);
-                    //if (myHelper.IsLocalUrl("/wall/"))
-                    //{
-
-                    //    return Redirect("wall");
-                    //}
-                    //else
-                    //{
-                    //    return Redirect("/login/");
-                    //}
+                    return RedirectToAction("ShowAllPosts", "Wall");                  
                 }
                 else
                 {
@@ -70,7 +60,7 @@ namespace UmbracoInstagram.Controllers
             Session.Clear();
             _autorizationService.Logout();
 
-            return Redirect("/");
+            return Redirect("/home/");
         }
     }
 }

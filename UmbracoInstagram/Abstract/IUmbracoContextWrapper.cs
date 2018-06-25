@@ -23,5 +23,6 @@ namespace UmbracoInstagram.Abstract
         WebSecurity GetSecurity();
         string GetDictionaryValue(string name);
         int GetCurrentPageId();
+        UmbracoHelper GetUmbracoHelper();
     }
 }
